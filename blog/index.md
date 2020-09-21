@@ -1,4 +1,4 @@
-# Mikey's Games, The Blog Part
+# Mikey's Games, The Blog
 
 Read my blog posts, if you dare!
 

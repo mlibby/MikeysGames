@@ -1,4 +1,6 @@
 # Mikey's Games
 What's going on here?
 
-Read [the blog about it](/blog/20200920-hello_world)
+I'm making a racing strategy game called [Formula X](/formulax)
+
+Read [the blog](/blog) to keep up on the latest

@@ -1,2 +1,4 @@
 # Mikey's Games
-Future home of some games I wrote a while back.
+What's going on here?
+
+Read [the blog about it](/blog/20200920-hello_world)

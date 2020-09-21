@@ -1,13 +1,13 @@
 ---
 layout: home
 ---
-# Hello
+## Hello
 
 What's going on here?
 
 I'm making a racing strategy game called [Formula X](/formulax)
 
-# Blog Posts
+## Blog Posts
 
 <ul>
   {% for post in site.posts %}

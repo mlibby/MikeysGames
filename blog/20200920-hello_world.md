@@ -26,4 +26,4 @@ nothing. Frameworks have been giving me a headache and getting in the way of my 
 OK. I will be using ONE framework: Express in NodeJS. I don't think that's going to keep me from learning the new client-side stuff I'm hoping to get
 a grip on.
 
-https://docs.microsoft.com/en-us/windows/wsl/install-win10
+Anyway... off we go!

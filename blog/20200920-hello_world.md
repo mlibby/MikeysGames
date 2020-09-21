@@ -20,7 +20,7 @@ getting the hardcore racing simulation experience, I'm positively addicted to ["
 And not that I expect it to take off, but I want to make a racing strategy game that capture the spirit of Formula E. And to do that I'll be starting
 with a multiplayer, interactive web-based version of Racetrack. Then I can build on that until I've got something to write home about.
 
-Plus, like a lot of good hobby programming projects, my plan is to write in vanilla JS, pure CSS, and HTML5. No jQuery, no React or Angular, no Bootstrap,
+Plus, like a lot of good hobby programming projects, a big motivation is the learning involved. So my plan is to write in vanilla JS, pure CSS, and HTML5. No jQuery, no React or Angular, no Bootstrap, 
 nothing. Frameworks have been giving me a headache and getting in the way of my learning the nuts and bolts and all the new awesome stuff out there.
 
 OK. I will be using ONE framework: Express in NodeJS. I don't think that's going to keep me from learning the new client-side stuff I'm hoping to get

@@ -1,4 +1,9 @@
-# Hello, World!
+---
+layout: post
+title:  "Hello, World!"
+date:   2020-09-20 17:00:00 -0500
+categories: formulax
+---
 
 I'm in the process of building a game server that runs on a Raspberry Pi (or any Linux system). The idea is that you can hook it up to your TV, have your friends
 or family get their smartphones or tablets out, and play a game together. It's like a cross between board games and video games like Playstation or XBox. And

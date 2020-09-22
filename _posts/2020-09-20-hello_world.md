@@ -2,7 +2,6 @@
 layout: post
 title:  "Hello, World!"
 date:   2020-09-20 17:00:00 -0500
-categories: formulax
 ---
 
 I'm in the process of building a game server that runs on a Raspberry Pi (or any Linux system). The idea is that you can hook it up to your TV, have your friends

@@ -55,7 +55,7 @@ dl, dt, dd, ol, ul, li,
 fieldset, form, label, legend,
 table, caption, tbody, tfoot, thead, tr, th, td,
 article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
+figure, figcaption, header, hgroup, 
 menu, nav, output, ruby, section, summary,
 time, mark, audio, video {
 	font-size: 100%;
@@ -89,6 +89,14 @@ span {
 article, aside, details, figcaption, figure, 
 footer, header, hgroup, menu, nav, section {
   display: block;
+}
+
+footer {
+  margin-top: 3em;
+  padding-top: 0.5em;
+  border-top: 0.5px solid grey;
+  color: darkslategray;
+  font-size: 0.8em;
 }
 
 body {

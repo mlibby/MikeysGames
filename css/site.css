@@ -1,7 +1,9 @@
+html {
+  font-family: 'Kadwa', sans-serif;
+}
+
 /* Code snippet stuff */
-
 /* from https://github.com/pages-themes/tactile/blob/master/_sass/jekyll-theme-tactile.scss */
-
 code, pre {
     margin-bottom: 30px;
     font-family: Monaco, "Bitstream Vera Sans Mono", "Lucida Console", Terminal;

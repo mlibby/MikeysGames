@@ -7,4 +7,4 @@ title: Formulæ
   please <a href="/#blog">read the blog</a>.
 <aside>
 
-<script type='module' src='formulaæ.js' />
+<script type='module' src='formulæ.js' />

@@ -2,7 +2,6 @@
 layout: post
 title: "A Little Bit of Jekyll"
 date: 2020-09-21 20:00:00 -0500
-hidden: true
 ---
 Since I'm hosting this site on <a href="https://pages.github.com/">GitHub Pages</a>,
 it seemed sensible as a first step to get the blog aspect of the site running

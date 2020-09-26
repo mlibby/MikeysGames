@@ -127,6 +127,10 @@ table {
 	border-spacing: 0;
 }
 
+em {
+  font-style: italic;
+}
+
 /* Code snippet stuff */
 /* from https://github.com/pages-themes/tactile/blob/master/_sass/jekyll-theme-tactile.scss */
 code, pre {

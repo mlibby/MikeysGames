@@ -6,7 +6,7 @@ layout: home
 
 What's going on here?
 
-I'm making a racing strategy game called <a href="formulæ/">Formulæ</a>
+I'm making a racing strategy game called <a href="/racing-game/">Mikey's Racing Game</a>
 
 <h2 id="blog">Blog</h2>
 

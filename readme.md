@@ -1,7 +1,3 @@
----
-layout: home
-title: "Read Me"
----
 Mikey's Games is copyright (C) 2020, Michael C. Libby.
 
 This program is free software: you can redistribute it and/or modify

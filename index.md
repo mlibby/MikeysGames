@@ -6,7 +6,8 @@ layout: home
 
 What's going on here?
 
-I'm making a racing strategy game called <a href="/racing-game/">Mikey's Racing Game</a>
+My family and I are writing some web-based games that you run on
+your own computer/TV and everyone plays from a smartphone or tablet
 
 <h2 id="blog">Blog</h2>
 

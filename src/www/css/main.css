@@ -326,6 +326,7 @@ nav .label:hover {
 
 nav .icon {
   vertical-align: middle;
+  width:150px;
 }
 
 nav .label {

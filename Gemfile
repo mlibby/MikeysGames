@@ -6,6 +6,7 @@ gem "sequel"
 gem "sequel-seed"
 gem "sinatra"
 gem "sinatra-flash"
+gem "haml"
 gem "thin"
 
 group :dev, :test, :prod do

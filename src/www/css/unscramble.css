@@ -1,5 +1,4 @@
 .unscramble .board {
-  margin: 2rem;
   border: 3px solid black;
   display: table;
 }
@@ -10,13 +9,14 @@
 
 .unscramble .board .die {
   display: table-cell;
-  padding: 1.33rem;
+  /* padding: 1.33rem; */
+  width: 3rem;
+  height: 3rem;
   margin: 0;
   border: 1px solid black;
 }
 
 .unscramble textarea {
-  margin-left: 2rem;
   width: 16rem;
   height: 20rem;
   border: 2px solid black;

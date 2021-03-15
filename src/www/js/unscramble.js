@@ -14,15 +14,12 @@ function areAdjacent(a, b) {
   [cell, ax, ay] = a.split("-");
   [cell, bx, by] = b.split("-");
 
-  if (ax === bx) {
-    return Math.abs(ay - by) === 1;
-  }
-  else if (ay === by) {
-    return Math.abs(ax - bx) === 1;
-  }
-  else {
-    return false;
-  }
+  let xdiff = Math.abs(ax - bx);
+  let ydiff = Math.abs(ay - by);
+
+  return (xdiff === 0 && ydiff === 1) ||
+    (xdiff === 1 && ydiff === 0) ||
+    (xdiff === 1 && ydiff === 1);
 }
 
 let wordList = document.querySelector("textarea");

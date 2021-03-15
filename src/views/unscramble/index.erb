@@ -1,11 +1,11 @@
 <h1>Unscramble</h1>
 <section class='unscramble'>
   <div class='board'>
-    <% 0.upto(4) do |row| %>
+    <% 0.upto(3) do |row| %>
       <div>
-        <% 0.upto(4) do |col| %>
+        <% 0.upto(3) do |col| %>
           <button id='cell-<%= row %>-<%= col %>' class='die'>
-            <%= @board[row][col] %>
+            <%= @board[row][col].showing %>
           </button>
         <% end %>
       </div>

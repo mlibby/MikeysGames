@@ -2,8 +2,6 @@ require "date"
 require "sequel"
 require "sequel/extensions/seed"
 
-require_relative "unscramble"
-
 module MikeysGames
   class Repo
     def initialize(db_connection)

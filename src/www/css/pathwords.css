@@ -1,13 +1,13 @@
-.unscramble .board {
+.pathwords .board {
   border: 3px solid black;
   display: table;
 }
 
-.unscramble .board .row {
+.pathwords .board .row {
   display: table-row;
 }
 
-.unscramble .board .die {
+.pathwords .board .die {
   display: table-cell;
   /* padding: 1.33rem; */
   width: 3rem;
@@ -16,7 +16,7 @@
   border: 1px solid black;
 }
 
-.unscramble textarea {
+.pathwords textarea {
   width: 16rem;
   height: 20rem;
   border: 2px solid black;

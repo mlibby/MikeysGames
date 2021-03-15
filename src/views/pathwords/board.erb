@@ -1,0 +1,11 @@
+<div class='board'>
+  <% 0.upto(3) do |row| %>
+    <div>
+      <% 0.upto(3) do |col| %>
+        <button id='cell-<%= row %>-<%= col %>' class='die'>
+          <%= @game[row][col].showing %>
+        </button>
+      <% end %>
+    </div>
+  <% end %>
+</div>

@@ -1,6 +1,7 @@
 require "haml"
 require "sinatra/base"
 require "sinatra/flash"
+require_relative "lib/mikeysgames_lib"
 require_relative "repo/mikeysgames_repo"
 
 module MikeysGames

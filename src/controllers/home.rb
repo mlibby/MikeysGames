@@ -2,7 +2,7 @@ module MikeysGames
   class App < Sinatra::Base
     get "/" do
       begin
-        haml :"home/index", layout: :layout
+        erb_layout :"home/index"
       end
     end
   end

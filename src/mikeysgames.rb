@@ -43,8 +43,8 @@ module MikeysGames
     require_relative "./lib/mikeysgames_lib"
     require_relative "./controllers/mikeysgames_controllers"
 
-    def haml_layout(view)
-      haml view, layout: :layout
+    def erb_layout(view)
+      erb view, layout: :layout
     end
 
     run! if app_file == $0

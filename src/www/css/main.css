@@ -27,12 +27,17 @@ button,
 select,
 optgroup,
 textarea {
-    font-family: "Fira Mono" !important;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: 1rem;
     font-weight: normal;
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
+}
+
+.big-button {
+    padding: 2rem;
+    font-size: 2rem;
 }
 
 body,
@@ -322,6 +327,10 @@ nav .label:hover {
     color: var(--primary-color);
 }
 
+nav h1 {
+    display: inline-block;
+}
+
 nav .icon {
     vertical-align: middle;
     width: 4rem;
@@ -414,4 +423,10 @@ tbody tr:nth-of-type(even) {
 
 tbody tr:last-of-type {
     border-bottom: 2px solid var(--primary-color);
+}
+
+tt {
+    font-family: "Fira Mono" !important;
+    font-size: 1.5rem;
+    font-weight: bold;
 }

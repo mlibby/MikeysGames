@@ -1,8 +1,8 @@
-require "haml"
 require "sinatra/base"
 require "sinatra/flash"
 require_relative "lib/mikeysgames_lib"
 require_relative "repo/mikeysgames_repo"
+require_relative "controllers/mikeysgames_controllers"
 
 module MikeysGames
   class App < Sinatra::Base
@@ -14,7 +14,6 @@ module MikeysGames
       "DEV" => "sqlite://mikeysgames.sqlite",
       "TEST" => "sqlite:/",
       "PROD" => "sqlite://mikeysgames.sqlite",
-      "DEMO" => ENV["DATABASE_URL"],
       "DUMP" => "sqlite://#{ARGV[0]}",
     }
 
@@ -23,37 +22,10 @@ module MikeysGames
     set :public_folder, "#{__dir__}/www"
     set :strict_paths, false
     set :method_override, true
-
-    @@token = MikeysGames::Repo.timestamp
-    def self.token
-      @@token
-    end
-
-    @@require_token = ["DELETE", "POST", "PUT"]
-    before do
-      if @@require_token.include?(request.env["REQUEST_METHOD"])
-        if ENV["APP_ENV"] == "DEMO"
-          halt 405, "Making changes to the Demo site is not allowed. <a href='javascript:history.back()'>Go Back</a>"
-        end
-        if !(params.has_key? "_token")
-          halt 403, "CSRF Token Required"
-        end
-      end
-    end
-
-    require_relative "./lib/mikeysgames_lib"
-    require_relative "./controllers/mikeysgames_controllers"
+    set :views, File.join(File.dirname(__FILE__), "views")
 
     def erb_layout(view)
       erb view, layout: :layout
-    end
-
-    if app_file == $0
-      configure do
-        set :bind, "0.0.0.0"
-        set :port, "1101"
-      end
-      run!
     end
   end
 end

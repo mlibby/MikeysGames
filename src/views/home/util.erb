@@ -1,0 +1,10 @@
+<h2>Utilities</h2>
+<button onclick="showScreenSize()">Show Screen Size</button>
+<script>
+  function showScreenSize() {
+    let width = window.innerWidth;
+    let height = window.innerHeight;
+    let ratio = window.devicePixelRatio;
+    alert("" + width + " x " + height + " @ " + ratio );
+  }
+</script>

@@ -309,6 +309,7 @@ main {
     padding: 0.5rem 2rem;
 }
 
+
 nav {
     margin: 0;
     padding: 0.33rem 2rem;
@@ -429,4 +430,20 @@ tt {
     font-family: "Fira Mono" !important;
     font-size: 1.5rem;
     font-weight: bold;
+}
+
+@media(max-width:420px) {
+  header {
+    margin: 0 auto;
+  }
+
+  nav {
+    display: flex;
+    justify-content: center;
+      padding: 0.33rem 0;
+  }
+
+  main {
+      padding: 0.33rem 0.66rem;
+  }
 }

@@ -34,5 +34,9 @@ module MikeysGames
         erb_layout :"pathwords/serve"
       end
     end
+
+    get "/util" do
+      erb_layout :"home/util"
+    end
   end
 end

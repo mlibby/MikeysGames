@@ -8,6 +8,7 @@ gem "sinatra"
 gem "sinatra-flash"
 gem "haml"
 gem "thin"
+gem "rqrcode"
 
 group :dev, :test, :prod do
   gem "sqlite3"

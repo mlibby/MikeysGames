@@ -13,7 +13,9 @@
       "program": "C:\\Ruby27-x64\\lib\\ruby\\gems\\2.7.0\\gems\\rack-2.2.3\\bin\\rackup",
       "args": [
         "-p",
-        "4567"
+        "1101",
+        "-o",
+        "0.0.0.0"
       ]
     }
   ]

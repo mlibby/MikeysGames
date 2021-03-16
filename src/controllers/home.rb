@@ -1,11 +1,19 @@
-require "socket"
+require "rqrcode"
 
 CurrentGame = nil
 
 module MikeysGames
   class App < Sinatra::Base
-    addr = Socket.ip_address_list.detect { |addr| addr.ipv4_private? }
-    server = "#{addr.ip_address}:#{settings.port}"
+    def qr_code(url)
+      qrcode = RQRCode::QRCode.new(url)
+      qrcode.as_svg(
+        offset: 0,
+        color: "000",
+        shape_rendering: "crispEdges",
+        module_size: 6,
+        standalone: true,
+      )
+    end
 
     get "/" do
       if CurrentGame.nil?
@@ -17,7 +25,9 @@ module MikeysGames
 
     get "/serve" do
       addr = Socket.ip_address_list.detect { |addr| addr.ipv4_private? }
-      @server = "#{addr.ip_address}:#{settings.port}"
+      port = request.env["SERVER_PORT"]
+      @server = "#{addr.ip_address}:#{port}"
+      @qr_code = qr_code("http://#{@server}/")
       if CurrentGame.nil?
         erb_layout :"home/serve"
       else

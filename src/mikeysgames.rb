@@ -15,7 +15,7 @@ module MikeysGames
       "TEST" => "sqlite:/",
       "PROD" => "sqlite://mikeysgames.sqlite",
       "DEMO" => ENV["DATABASE_URL"],
-      "DUMP" => "sqlite://#{ARGV[0]}"
+      "DUMP" => "sqlite://#{ARGV[0]}",
     }
 
     @@repo = MikeysGames::Repo.new db_connections[ENV["APP_ENV"] || "DEV"]
@@ -48,6 +48,12 @@ module MikeysGames
       erb view, layout: :layout
     end
 
-    run! if app_file == $0
+    if app_file == $0
+      configure do
+        set :bind, "0.0.0.0"
+        set :port, "1101"
+      end
+      run!
+    end
   end
 end

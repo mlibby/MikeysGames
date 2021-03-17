@@ -6,9 +6,7 @@ GEM
     diff-lcs (1.4.4)
     docile (1.3.5)
     eventmachine (1.2.7-x64-mingw32)
-    haml (5.2.1)
-      temple (>= 0.8.0)
-      tilt
+    multi_json (1.15.0)
     mustermann (1.1.1)
       ruby2_keywords (~> 0.0.1)
     nokogiri (1.11.1-x64-mingw32)
@@ -55,10 +53,15 @@ GEM
       rack (~> 2.2)
       rack-protection (= 2.1.0)
       tilt (~> 2.0)
+    sinatra-contrib (2.1.0)
+      multi_json
+      mustermann (~> 1.0)
+      rack-protection (= 2.1.0)
+      sinatra (= 2.1.0)
+      tilt (~> 2.0)
     sinatra-flash (0.3.0)
       sinatra (>= 1.0.0)
     sqlite3 (1.4.2)
-    temple (0.8.2)
     thin (1.8.0)
       daemons (~> 1.0, >= 1.0.9)
       eventmachine (~> 1.0, >= 1.0.4)
@@ -69,7 +72,6 @@ PLATFORMS
   x64-mingw32
 
 DEPENDENCIES
-  haml
   rack-test
   rake
   rqrcode
@@ -80,6 +82,7 @@ DEPENDENCIES
   sequel-seed
   simplecov
   sinatra
+  sinatra-contrib
   sinatra-flash
   sqlite3
   thin

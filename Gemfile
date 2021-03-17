@@ -6,7 +6,7 @@ gem "sequel"
 gem "sequel-seed"
 gem "sinatra"
 gem "sinatra-flash"
-gem "haml"
+gem "sinatra-contrib"
 gem "thin"
 gem "rqrcode"
 

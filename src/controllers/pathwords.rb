@@ -21,9 +21,15 @@ class MikeysGames < Sinatra::Base
   end
 
   post "/pathwords/player_join" do
-    cookies[:player_name] = request.params["player_name"]
+    cookies[:player_name] = request.params["player-name"]
     @game = Pathwords.instance
     @game.add_player Pathwords::Player.new(cookies[:player_id], cookies[:player_name])
+    redirect "/pathwords/play"
+  end
+
+  post "/pathwords/player_expect" do
+    @game = Pathwords.instance
+    @game.set_players_expected request.params["players-expected"]
     redirect "/pathwords/play"
   end
 end

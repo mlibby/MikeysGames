@@ -5,12 +5,13 @@ require_relative "pathwords_player"
 class Pathwords
   include Singleton
 
-  attr_accessor :players
+  attr_accessor :players_expected
 
   def initialize
     @dice = new_dice.roll
     @board = []
     @players = {}
+    @players_expected = 0
 
     @dice.each_slice(4) do |row|
       @board << row
@@ -50,15 +51,30 @@ class Pathwords
     @players[id]
   end
 
+  def player_count
+    @players.size
+  end
+
+  def set_players_expected(count)
+    @players_expected = @players_expected > 0 ? @players_expected : count
+  end
+
+  def timer
+    nil
+  end
+
   def player_data
     {
-      player_count: @players.size,
+      playerCount: @players.size,
+      playersExpected: @players_expected,
+      timer: timer,
     }
   end
 
   def server_data
     {
-      player_count: @players.size,
+      playerCount: @players.size,
+      playersExpected: @players_expected,
       players: @players.map { |id, player| player.name }.sort,
     }
   end

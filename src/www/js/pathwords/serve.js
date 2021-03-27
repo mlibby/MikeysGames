@@ -1,3 +1,19 @@
+let playerCount;
+let playersExpected;
+let playersNeeded;
+let playersJoining;
+let playerList;
+
+document.addEventListener("DOMContentLoaded", function(event) {
+    playerCount = document.querySelector("#player-count");
+    playersExpected = document.querySelector("#players-expected");
+    playersNeeded = document.querySelector("#players-needed");
+    playersJoining = document.querySelector("#players-joining");
+    playerList = document.querySelector("#players");
+
+    getUpdate();
+});
+
 function getUpdate() {
     setTimeout(() => {
         fetch("/pathwords/server_pulse")
@@ -7,10 +23,16 @@ function getUpdate() {
 }
 
 function displayUpdate(response) {
-    let playerCount = document.querySelector("#player-count");
-    playerCount.innerText = response.player_count;
+    if (response.playersExpected > 0) {
+        playersNeeded.style.display = "none";
+        playersJoining.style.display = "block";
+        playerCount.innerText = response.playerCount;
+        playersExpected.innerText = response.playersExpected;
+    } else {
+        playersNeeded.style.display = "block";
+        playersJoining.style.display = "none";
+    }
 
-    let players = document.querySelector("#players");
     players.replaceChildren();
     response.players.forEach((player) => {
         const li = document.createElement("li")
@@ -20,7 +42,3 @@ function displayUpdate(response) {
 
     getUpdate();
 }
-
-document.addEventListener("DOMContentLoaded", function(event) {
-    getUpdate();
-});

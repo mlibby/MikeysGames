@@ -45,20 +45,16 @@ function getUpdate() {
 }
 
 function displayUpdate(response) {
-    let playerCount = document.querySelector("#player-count");
-    playerCount.innerText = response.player_count;
-    getUpdate();
-}
+    if (response.playersExpected > 0) {
+        let playerCount = document.querySelector("#player-count");
+        playerCount.innerText = response.playerCount;
+        let playersExpected = document.querySelector("#players-expected");
+        playersExpected.innerText = response.playersExpected
+    }
 
-function joinClicked(event) {
-    fetch("/pathwords/player_join")
-        .then(response => response.json())
-        .then(displayUpdate);
+    getUpdate();
 }
 
 document.addEventListener("DOMContentLoaded", function(event) {
     getUpdate();
-
-    let joinButton = document.querySelector("#join");
-    joinButton.addEventListener("click", joinClicked);
 });

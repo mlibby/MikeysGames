@@ -1,6 +1,12 @@
 <h1>Pathwords</h1>
-<p>Waiting for players to join</p>
-<p id='player-count'>-</p>
+<p id='players-needed'>
+  Please enter a number of players to expect on your player screen
+</p>
+<p id='players-joining' style='display:none;'>
+  <span id='player-count'>-</span> / 
+  <span id='players-expected'>-</span>
+  players have joined the game
+</p>
 <section class='pathwords'>
   <%= erb :"pathwords/board" %>
   <h2>Players</h2>

@@ -1,7 +1,5 @@
 module MikeysGames
   class App < Sinatra::Base
-    @@pulse_count = 0
-
     get "/pathwords/serve" do
       @game = MikeysGames::Pathwords.instance
       erb_layout :"pathwords/serve"
@@ -13,8 +11,19 @@ module MikeysGames
     end
 
     get "/pathwords/server_pulse" do
-      @@pulse_count += 1
-      json :player_count => @@pulse_count
+      @game = MikeysGames::Pathwords.instance
+      json @game.server_data
+    end
+
+    get "/pathwords/player_pulse" do
+      @game = MikeysGames::Pathwords.instance
+      json @game.player_data
+    end
+
+    get "/pathwords/player_join" do
+      @game = MikeysGames::Pathwords.instance
+      @game.players << "player"
+      json @game.player_data
     end
   end
 end

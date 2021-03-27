@@ -5,9 +5,13 @@ module MikeysGames
   class Pathwords
     include Singleton
 
+    attr_accessor :players
+
     def initialize
       @dice = new_dice.roll
       @board = []
+      @players = []
+
       @dice.each_slice(4) do |row|
         @board << row
       end
@@ -36,6 +40,18 @@ module MikeysGames
         %w[U W I L R G],
         %w[P A C E M D],
       ]
+    end
+
+    def player_data
+      {
+        player_count: @players.size,
+      }
+    end
+
+    def server_data
+      {
+        player_count: @players.size,
+      }
     end
   end
 end

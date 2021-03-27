@@ -170,6 +170,9 @@ dt {
     border-radius: 1rem;
     box-shadow: 0.25rem 0.25rem 0.75rem black;
 }
+form {
+    margin-bottom: 2rem;
+}
 
 form label {
     margin: 0 0 3px 0;

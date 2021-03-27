@@ -1,35 +1,33 @@
-module MikeysGames
-  class Die
-    attr_reader :showing
+class Die
+  attr_reader :showing
 
-    def initialize(sides)
-      @sides = sides
-      @showing = @sides[0]
-    end
-
-    def roll
-      @showing = @sides.shuffle[0]
-    end
+  def initialize(sides)
+    @sides = sides
+    @showing = @sides[0]
   end
 
-  class Dice
-    def initialize(dice)
-      @dice = []
+  def roll
+    @showing = @sides.shuffle[0]
+  end
+end
 
-      dice.each do |die|
-        @dice << Die.new(die)
-      end
+class Dice
+  def initialize(dice)
+    @dice = []
 
-      roll
+    dice.each do |die|
+      @dice << Die.new(die)
     end
 
-    def all
-      @dice
-    end
+    roll
+  end
 
-    def roll
-      @dice.each { |die| die.roll }
-      @dice.shuffle!
-    end
+  def all
+    @dice
+  end
+
+  def roll
+    @dice.each { |die| die.roll }
+    @dice.shuffle!
   end
 end

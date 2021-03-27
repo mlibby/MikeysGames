@@ -10,8 +10,8 @@
 .pathwords .board .die {
   display: table-cell;
   /* padding: 1.33rem; */
-  width: 3rem;
-  height: 3rem;
+  width: 5rem;
+  height: 5rem;
   margin: 0;
   border: 1px solid black;
 }

@@ -1,11 +1,17 @@
 <h1>Pathwords</h1>
-<p><span id="player-count">-</span> players have joined the game</p>
-<p>
-  <button id='join'>Join Game</button>
-</p>
+<p><span id='player_count'>-</span> players have joined the game</p>
+<% unless @player %>
+  <form action='/pathwords/player_join' method='POST'>
+    <label>
+      Player Name
+      <input name='player_name' type='text' required />
+    </label>
+    <button>Join Game</button>
+  </form>
+<% end %>
 <section class='pathwords'>
   <%= erb :"pathwords/board" %>
   <h2>Your Words</h2>
   <textarea></textarea>
 </section>
-<script src="/js/pathwords/play.js"></script>
+<script src='/js/pathwords/play.js'></script>

@@ -1,19 +1,30 @@
 <h1>Pathwords</h1>
-<% if @game.players_expected == 0 %>
-  <form action='/pathwords/player_expect' method='POST'>
-    <label>
-      Number of Players
-      <input name='players-expected' type='number' required />
-    </label>
-    <button>Set Number of Players</button>
-  </form>
-<% else %>
-  <p>
-    <span id='player-count'><%= @game.player_count %></span> / 
-    <span id='players-expected'><%= @game.players_expected %></span>
-    players have joined the game
-  </p>
-<% end %>
+<div id='stage-0'>
+  <% if @game.players_expected == 0 %>
+    <form action='/pathwords/player_expect' method='POST'>
+      <label>
+        Number of Players
+        <input name='players-expected' type='number' required />
+      </label>
+      <button>Set Number of Players</button>
+    </form>
+  <% else %>
+    <p>
+      <span id='player-count'><%= @game.player_count %></span> / 
+      <span id='players-expected'><%= @game.players_expected %></span>
+      players have joined the game
+    </p>
+  <% end %>
+</div>
+<div id='stage-1' style='display:none;'>
+  Game starts in <span id='starts-in'>15</span> seconds
+</div>
+<div id='stage-2' style='display:none;'>
+  <span id='time-left'>180</span> seconds left 
+</div>
+<div id='stage-3' style='display:none;'>
+  GAME OVER
+</div>
 <% unless @player %>
   <form action='/pathwords/player_join' method='POST'>
     <label>

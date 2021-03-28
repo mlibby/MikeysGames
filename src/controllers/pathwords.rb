@@ -1,10 +1,12 @@
 class MikeysGames < Sinatra::Base
   get "/pathwords/serve" do
+    @title = "Pathwords"
     @game = Pathwords.instance
     erb_layout :"pathwords/serve"
   end
 
   get "/pathwords/play" do
+    @title = "Pathwords"
     @game = Pathwords.instance
     @player = @game.find_player(cookies[:player_id])
     erb_layout :"pathwords/play"

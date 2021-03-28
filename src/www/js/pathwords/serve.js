@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
   playersExpected = document.querySelector("#players-expected");
   playersNeeded = document.querySelector("#players-needed");
   playersJoining = document.querySelector("#players-joining");
-  playerList = document.querySelector("#players");
+  playerList = document.querySelector("#player-list");
 
   getUpdate();
 });
@@ -35,11 +35,11 @@ function displayUpdate(response) {
     playersJoining.style.display = "none";
   }
 
-  players.replaceChildren();
+  playerList.replaceChildren();
   response.players.forEach((player) => {
     const li = document.createElement("li")
     li.innerText = player
-    players.appendChild(li);
+    playerList.appendChild(li);
   });
 
   getUpdate();

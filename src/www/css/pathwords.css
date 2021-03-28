@@ -16,6 +16,15 @@
   border: 1px solid black;
 }
 
+.pathwords.server {
+  display: flex;
+  flex-direction: row;
+}
+
+.pathwords.server section {
+  flex:auto;
+}
+
 .pathwords textarea {
   width: 16rem;
   height: 20rem;

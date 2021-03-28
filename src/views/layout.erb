@@ -16,11 +16,9 @@
         <a href='/' title='Home'>
           <img class='icon' src='/dice.png'>
         </a>
-        <h1>Mikey's Games</h1>
+        <h1>Mikey's Games <%= @title.nil? ? "" : ": #{@title}" %></h1>
       </nav>
     </header>
-    <main role='main'>
-      <%= yield %>
-    </main>
+    <%= yield %>
   </body>
 </html>

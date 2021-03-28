@@ -1,15 +1,27 @@
-<h1>Pathwords</h1>
-<p id='players-needed'>
-  Please enter a number of players to expect on your player screen
-</p>
-<p id='players-joining' style='display:none;'>
-  <span id='player-count'>-</span> / 
-  <span id='players-expected'>-</span>
-  players have joined the game
-</p>
-<section class='pathwords'>
-  <%= erb :"pathwords/board" %>
-  <h2>Players</h2>
-  <ul id='players'></ul>
-</section>
+<main class='pathwords server'>
+  <section id='game'>
+    <h2>The Game</h2>
+    <div class='stage-1'>
+      Game starts in: <span id='starts-in'>15</span> seconds
+    </div>
+    <div class='stage-2'>
+      Time left: <span id='time-left'>180</span> seconds
+    </div>
+    <%= erb :"pathwords/board" %>
+  </section>
+  <section id='players'>
+    <h2>Players</h2>
+    <div class='stage-0'>
+      <p id='players-needed'>
+        Please enter a number of players to expect on your player screen
+      </p>
+      <p id='players-joining' style='display:none;'>
+        <span id='player-count'>-</span> / 
+        <span id='players-expected'>-</span>
+        players have joined the game
+      </p>
+    </div>
+    <ul id='player-list'></ul>
+  </section>
+</main>
 <script src="/js/pathwords/serve.js"></script>

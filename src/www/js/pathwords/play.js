@@ -20,10 +20,10 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
   playerCount = document.querySelector("#player-count");
   playersExpected = document.querySelector("#players-expected");
-  stageZero = document.querySelector("#stage-0");
-  stageOne = document.querySelector("#stage-1");
-  stageTwo = document.querySelector("#stage-2");
-  stageThree = document.querySelector("#stage-3");
+  stageZero = document.querySelectorAll(".stage-0");
+  stageOne = document.querySelectorAll(".stage-1");
+  stageTwo = document.querySelectorAll(".stage-2");
+  stageThree = document.querySelectorAll(".stage-3");
   startsIn = document.querySelector("#starts-in");
   timeLeft = document.querySelector("#time-left");
   wordList = document.querySelector("textarea");
@@ -67,12 +67,24 @@ function getUpdate() {
   }, 444);
 }
 
+function show(nodes) {
+  nodes.forEach((node) => {
+    node.style.display = "block";
+  })
+}
+
+function hide(nodes) {
+  nodes.forEach((node) => {
+    node.style.display = "none";
+  })
+}
+
 function displayUpdate(response) {
   if (response.stage == 0) {
-    stageZero.style.display = "block";
-    stageOne.style.display = "none";
-    stageTwo.style.display = "none";
-    stageThree.style.display = "none";
+    show(stageZero);
+    hide(stageOne);
+    hide(stageTwo);
+    hide(stageThree);
 
     if (response.playersExpected > 0) {
       playerCount.innerText = response.playerCount;
@@ -80,24 +92,24 @@ function displayUpdate(response) {
     }
   }
   else if (response.stage == 1) {
-    stageZero.style.display = "none";
-    stageOne.style.display = "block";
-    stageTwo.style.display = "none";
-    stageThree.style.display = "none";
+    hide(stageZero);
+    show(stageOne);
+    hide(stageTwo);
+    hide(stageThree);
     startsIn.innerText = response.timer;
   }
   else if(response.stage == 2) {
-    stageZero.style.display = "none";
-    stageOne.style.display = "none";
-    stageTwo.style.display = "block";
-    stageThree.style.display = "none";
+    hide(stageZero);
+    hide(stageOne);
+    show(stageTwo);
+    hide(stageThree);
     timeLeft.innerText = response.timer;
   }
   else if(response.stage == 3) {
-    stageZero.style.display = "none";
-    stageOne.style.display = "none";
-    stageTwo.style.display = "none";
-    stageThree.style.display = "block";
+    hide(stageZero);
+    hide(stageOne);
+    hide(stageTwo);
+    show(stageThree);
     timeLeft.innerText = response.timer;
   }
 

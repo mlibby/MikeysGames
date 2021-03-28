@@ -5,7 +5,7 @@ require_relative "pathwords_player"
 class Pathwords
   include Singleton
 
-  attr_accessor :players_expected
+  attr_accessor :players_expected, :stage
 
   def initialize
     @dice = new_dice.roll

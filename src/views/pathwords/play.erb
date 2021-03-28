@@ -1,5 +1,5 @@
 <main class='pathwords player'>
-  <div class='stage-0'>
+  <div class='stage-0' <%= "style='display:none;'" unless @game.stage == 0 %>>
     <% if @game.players_expected == 0 %>
       <form action='/pathwords/player_expect' method='POST'>
         <label>
@@ -16,13 +16,13 @@
       </p>
     <% end %>
   </div>
-  <div class='stage-1' style='display:none;'>
-    Game starts in <span id='starts-in'>15</span> seconds
+  <div class='stage-1' <%= "style='display:none;'" unless @game.stage == 1 %>>
+    Game starts in <span id='starts-in'><%= @game.get_timer %></span> seconds
   </div>
-  <div class='stage-2' style='display:none;'>
-    <span id='time-left'>180</span> seconds left 
+  <div class='stage-2' <%= "style='display:none;'" unless @game.stage == 2 %>>
+    <span id='time-left'><%= @game.get_timer %></span> seconds left 
   </div>
-  <div class='stage-3' style='display:none;'>
+  <div class='stage-3' <%= "style='display:none;'" unless @game.stage == 3 %>>
     GAME OVER
   </div>
   <% unless @player %>

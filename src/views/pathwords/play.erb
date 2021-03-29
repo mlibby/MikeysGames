@@ -36,8 +36,19 @@
   <% end %>
   <section class='pathwords'>
     <%= erb :"pathwords/board" %>
-    <h2>Your Words</h2>
-    <textarea></textarea>
+    <div class='stage-2'>
+      <form>
+        <input name='prevent-submit' type='text' required style='display:none;'/>
+        <label>
+          Your Word
+          <input type='text' name='word-in-progress' />
+        </label>
+        <button id='play-word'>Play Word</button>
+      </form>
+      <h2>Played Words</h2>
+      <ul id='played-words'>
+      </ul>
+    </div>
   </section>
 </main>
 <script src='/js/pathwords/play.js'></script>

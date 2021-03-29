@@ -1,6 +1,7 @@
 .pathwords .board {
   border: 3px solid black;
   display: table;
+  margin-bottom: 2rem;
 }
 
 .pathwords .board .row {

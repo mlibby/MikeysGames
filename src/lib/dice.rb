@@ -29,5 +29,6 @@ class Dice
   def roll
     @dice.each { |die| die.roll }
     @dice.shuffle!
+    self
   end
 end

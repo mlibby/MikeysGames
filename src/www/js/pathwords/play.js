@@ -1,5 +1,6 @@
+let dice;
+let boardLoaded = false;
 let lastButton = "";
-let buttons;
 let playerCount;
 let playersExpected;
 let stageZero;
@@ -8,16 +9,13 @@ let stageTwo;
 let stageThree;
 let startsIn;
 let timeLeft;
-let wordList;
+let wordInProgress;
+let wordsPlayed;
 
 document.addEventListener("DOMContentLoaded", function (event) {
   getUpdate();
 
-  let buttons = document.querySelectorAll(".unscramble .board .die");
-  buttons.forEach((button) => {
-    button.addEventListener("click", dieClicked, false);
-  });
-
+  dice = document.querySelectorAll(".die");
   playerCount = document.querySelector("#player-count");
   playersExpected = document.querySelector("#players-expected");
   stageZero = document.querySelectorAll(".stage-0");
@@ -26,7 +24,8 @@ document.addEventListener("DOMContentLoaded", function (event) {
   stageThree = document.querySelectorAll(".stage-3");
   startsIn = document.querySelector("#starts-in");
   timeLeft = document.querySelector("#time-left");
-  wordList = document.querySelector("textarea");
+  wordInProgress = document.querySelector("#word-in-progress");
+  wordsPlayed = document.querySelector("#words-played");
 });
 
 function areAdjacent(a, b) {
@@ -46,15 +45,41 @@ function areAdjacent(a, b) {
     (xdiff === 1 && ydiff === 1);
 }
 
+function loadBoard(board) {
+  if (!boardLoaded) {
+    board.forEach((diceInRow, row) => {
+      diceInRow.forEach((showing, column) => {
+        const die = document.querySelector("#cell-" + row + "-" + column);
+        die.innerText = showing;
+        die.addEventListener("click", dieClicked, false);
+      });
+    });
+    boardLoaded = true;
+  }
+}
+
+function unloadBoard() {
+  if (boardLoaded) {
+    const dice = document.querySelectorAll(".die");
+    dice.forEach((die) => {
+      die.removeEventListener("click", dieClicked);
+    });
+    boardLoaded = false;
+  }
+}
 
 function dieClicked() {
   if (lastButton === this.id) {
-    wordList.value = wordList.value + "\n";
+    const li = document.createElement("li");
+    li.innerText = wordInProgress.value;
+    wordsPlayed.appendChild(li);
+    wordInProgress.value = "";
     lastButton = "";
-  } else {
+  }
+  else {
     if (areAdjacent(lastButton, this.id)) {
       lastButton = this.id;
-      wordList.value = wordList.value.concat(this.innerText);
+      wordInProgress.value = wordInProgress.value.concat(this.innerText);
     }
   }
 }
@@ -81,10 +106,10 @@ function hide(nodes) {
 
 function displayUpdate(response) {
   if (response.stage == 0) {
-    show(stageZero);
     hide(stageOne);
     hide(stageTwo);
     hide(stageThree);
+    show(stageZero);
 
     if (response.playersExpected > 0) {
       playerCount.innerText = response.playerCount;
@@ -93,23 +118,26 @@ function displayUpdate(response) {
   }
   else if (response.stage == 1) {
     hide(stageZero);
-    show(stageOne);
     hide(stageTwo);
     hide(stageThree);
+    show(stageOne);
     startsIn.innerText = response.timer;
   }
-  else if(response.stage == 2) {
+  else if (response.stage == 2) {
     hide(stageZero);
     hide(stageOne);
-    show(stageTwo);
     hide(stageThree);
+    show(stageTwo);
+    loadBoard(response.board);
+
     timeLeft.innerText = response.timer;
   }
-  else if(response.stage == 3) {
+  else if (response.stage == 3) {
     hide(stageZero);
     hide(stageOne);
     hide(stageTwo);
     show(stageThree);
+    unloadBoard();
     timeLeft.innerText = response.timer;
   }
 

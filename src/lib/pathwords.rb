@@ -10,18 +10,25 @@ class Pathwords
   def initialize
     @dice = new_dice.roll
     @board = []
+    @board_cache = []
     @players = {}
     @players_expected = 0
     @timer = 0
     @stage = 0 # 0: pre-game, 1: mid-game, 2: post-game
 
-    @dice.each_slice(4) do |row|
+    @dice.all.each_slice(4) do |row|
       @board << row
     end
   end
 
   def [](index)
     @board[index]
+  end
+
+  def cache_board
+    @board_cache = @board.map do |row|
+      row.map { |die| die.showing }
+    end
   end
 
   def new_dice
@@ -49,7 +56,7 @@ class Pathwords
     @players[player.id] = player
     if @players.size == @players_expected
       @stage = 1
-      @timer = Time.now + 15
+      @timer = Time.now + 10
     end
   end
 
@@ -76,6 +83,8 @@ class Pathwords
       if @stage == 3
         @timer = 0
       elsif @stage == 2
+        @dice.roll
+        cache_board
         # very short games for testing
         @timer = now + 30
         #@timer = now + 180
@@ -87,6 +96,7 @@ class Pathwords
 
   def player_data
     {
+      board: @board_cache,
       playerCount: @players.size,
       playersExpected: @players_expected,
       stage: @stage,
@@ -96,6 +106,7 @@ class Pathwords
 
   def server_data
     {
+      board: @board_cache,
       playerCount: @players.size,
       playersExpected: @players_expected,
       players: @players.map { |id, player| player.name }.sort,

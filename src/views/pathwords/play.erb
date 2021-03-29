@@ -36,17 +36,17 @@
   <% end %>
   <section class='pathwords'>
     <%= erb :"pathwords/board" %>
-    <div class='stage-2'>
+    <div class='stage-2 stage-3' <%= "style='display:none;'" unless @game.stage == 2 %>>
       <form>
         <input name='prevent-submit' type='text' required style='display:none;'/>
         <label>
           Your Word
-          <input type='text' name='word-in-progress' />
+          <input type='text' id='word-in-progress' />
         </label>
         <button id='play-word'>Play Word</button>
       </form>
-      <h2>Played Words</h2>
-      <ul id='played-words'>
+      <h2>Words Played</h2>
+      <ul id='words-played'>
       </ul>
     </div>
   </section>

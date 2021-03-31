@@ -14,15 +14,25 @@ class Pathwords
     @players = {}
     @players_expected = 0
     @timer = 0
-    @stage = 0 # 0: pre-game, 1: mid-game, 2: post-game
+
+    #stages are:
+    # 0 - gathering players
+    # 1 - pre-game timer
+    # 2 - in-game
+    # 3 - post-game
+    @stage = 0
 
     @dice.all.each_slice(4) do |row|
       @board << row
     end
   end
 
-  def [](index)
-    @board[index]
+  def get_letter(row, col)
+    if @stage >= 2
+      @board[row][col]
+    else
+      "⁕"
+    end
   end
 
   def cache_board

@@ -1,3 +1,4 @@
+let boardLoaded = false;
 let playerCount;
 let playersExpected;
 let playersNeeded;
@@ -46,12 +47,24 @@ function getUpdate() {
   }, 444);
 }
 
+function loadBoard(board) {
+  if (!boardLoaded) {
+    board.forEach((diceInRow, row) => {
+      diceInRow.forEach((showing, column) => {
+        const die = document.querySelector("#cell-" + row + "-" + column);
+        die.innerText = showing;
+      });
+    });
+    boardLoaded = true;
+  }
+}
+
 function displayUpdate(response) {
   if (response.stage == 0) {
-    show(stageZero);
     hide(stageOne);
     hide(stageTwo);
     hide(stageThree);
+    show(stageZero);
 
     if (response.playersExpected > 0) {
       playersNeeded.style.display = "none";
@@ -67,24 +80,24 @@ function displayUpdate(response) {
   }
   else if (response.stage == 1) {
     hide(stageZero);
-    show(stageOne);
     hide(stageTwo);
     hide(stageThree);
+    show(stageOne);
     startsIn.innerText = response.timer;
   }
   else if (response.stage == 2) {
     hide(stageZero);
     hide(stageOne);
-    show(stageTwo);
     hide(stageThree);
+    show(stageTwo);
     timeLeft.innerText = response.timer;
+    loadBoard(response.board);
   }
   else if (response.stage == 3) {
     hide(stageZero);
     hide(stageOne);
     hide(stageTwo);
     show(stageThree);
-    timeLeft.innerText = response.timer;
   }
 
   playerList.replaceChildren();

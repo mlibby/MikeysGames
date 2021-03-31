@@ -9,8 +9,15 @@
 }
 
 @font-face {
-    font-family: "Fira Mono";
-    src: url("fonts/FiraMono-Medium.ttf") format("truetype"), url("fonts/FiraMono-Medium.woff") format("woff");
+    font-family: "FredokaOne";
+    src: url("fonts/FredokaOne.ttf") format("truetype");
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "ShareTechMono";
+    src: url("fonts/ShareTechMono.ttf") format("truetype");
     font-weight: 500;
     font-style: normal;
 }
@@ -287,6 +294,16 @@ h4,
 h5,
 h6 {
     margin: 1rem 0 0.5rem 0;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
 }
 
 li.account {

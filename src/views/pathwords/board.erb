@@ -1,9 +1,9 @@
 <div class='board'>
   <% 0.upto(3) do |row| %>
-    <div>
+    <div class='row'>
       <% 0.upto(3) do |col| %>
         <button id='cell-<%= row %>-<%= col %>' class='die'>
-          *
+          <%= @game.get_letter(row, col) %>
         </button>
       <% end %>
     </div>

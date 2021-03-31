@@ -141,5 +141,7 @@ function displayUpdate(response) {
     timeLeft.innerText = response.timer;
   }
 
-  getUpdate();
+  if(response.stage < 3) {
+    getUpdate();
+  }
 }

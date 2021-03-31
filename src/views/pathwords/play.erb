@@ -1,39 +1,43 @@
 <main class='pathwords player'>
-  <div class='stage-0' <%= "style='display:none;'" unless @game.stage == 0 %>>
-    <% if @game.players_expected == 0 %>
-      <form action='/pathwords/player_expect' method='POST'>
-        <label>
-          Number of Players
-          <input name='players-expected' min='1' type='number' required />
-        </label>
-        <button>Set Number of Players</button>
-      </form>
-    <% else %>
-      <p>
-        <span id='player-count'><%= @game.player_count %></span> / 
-        <span id='players-expected'><%= @game.players_expected %></span>
-        players have joined the game
-      </p>
-      <form id='player-join' action='/pathwords/player_join' method='POST'>
-        <label>
-          Player Name
-          <input name='player-name' type='text' required />
-        </label>
-        <button>Join Game</button>
-      </form>
-    <% end %>
-  </div>
-  <div class='big-info stage-1' <%= "style='display:none;'" unless @game.stage == 1 %>>
-    Game starts in <span id='starts-in'><%= @game.get_timer %></span> seconds
-  </div>
-  <div class='big-info stage-2' <%= "style='display:none;'" unless @game.stage == 2 %>>
-    <span id='time-left'><%= @game.get_timer %></span> seconds left 
-  </div>
-  <div class='big-info game-over stage-3' <%= "style='display:none;'" unless @game.stage == 3 %>>
-    GAME OVER
-  </div>
-  <section class='pathwords'>
+  <section id='game'>
+    <div class='big-info stage-1' <%= "style='display:none;'" unless @game.stage == 1 %>>
+      Game starts in:<br />
+      <span id='starts-in'><%= @game.get_timer %></span> seconds
+    </div>
+    <div class='big-info stage-2' <%= "style='display:none;'" unless @game.stage == 2 %>>
+      Time left:<br />
+      <span id='time-left'><%= @game.get_timer %></span> seconds
+    </div>
+    <div class='big-info game-over stage-3' <%= "style='display:none;'" unless @game.stage == 3 %>>
+      GAME OVER
+    </div>
     <%= erb :"pathwords/board" %>
+    <div class='stage-0' <%= "style='display:none;'" unless @game.stage == 0 %>>
+      <% if @game.players_expected == 0 %>
+        <form action='/pathwords/player_expect' method='POST'>
+          <label>
+            Number of Players
+            <input name='players-expected' min='1' type='number' required />
+          </label>
+          <button>Set Number of Players</button>
+        </form>
+      <% else %>
+        <p>
+          <span id='player-count'><%= @game.player_count %></span> / 
+          <span id='players-expected'><%= @game.players_expected %></span>
+          players have joined the game
+        </p>
+        <form id='player-join' action='/pathwords/player_join' method='POST'>
+          <label>
+            Player Name
+            <input name='player-name' type='text' required />
+          </label>
+          <button>Join Game</button>
+        </form>
+      <% end %>
+    </div>
+  </section>
+  <section id='words'>
     <div class='stage-2' <%= "style='display:none;'" unless @game.stage == 2 %>>
       <form>
         <input name='prevent-submit' type='text' required style='display:none;'/>

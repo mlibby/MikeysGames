@@ -29,7 +29,7 @@ class Pathwords
 
   def get_letter(row, col)
     if @stage >= 2
-      @board[row][col]
+      @board[row][col].showing
     else
       "⁕"
     end

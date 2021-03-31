@@ -1,11 +1,12 @@
 <main class='pathwords server'>
   <section id='game'>
-    <h2>The Game</h2>
     <div class='big-info stage-1' style='display:none;'>
-      Game starts in: <span id='starts-in'><%= @game.get_timer %></span> seconds
+      Game starts in:<br />
+      <span id='starts-in'><%= @game.get_timer %></span> seconds
     </div>
     <div class='big-info stage-2' style='display:none;'>
-      Time left: <span id='time-left'><%= @game.get_timer %></span> seconds
+      Time left:<br />
+      <span id='time-left'><%= @game.get_timer %></span> seconds
     </div>
     <div class='big-info game-over stage-3' style='display:none;'>
       GAME OVER

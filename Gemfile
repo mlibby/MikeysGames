@@ -10,6 +10,10 @@ gem "sinatra-contrib"
 gem "thin"
 gem "rqrcode"
 
+group :dev do
+  gem "ruby-debug-ide"
+end
+
 group :dev, :test, :prod do
   gem "sqlite3"
 end

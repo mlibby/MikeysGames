@@ -10,7 +10,7 @@
       "request": "launch",
       "env": {"APP_ENV": "DEV"},
       "cwd": "${workspaceRoot}",
-      "program": "C:\\Ruby27-x64\\lib\\ruby\\gems\\2.7.0\\gems\\rack-2.2.3\\bin\\rackup",
+      "program": "/usr/local/bin/rackup",
       "args": [
         "-p",
         "1101",

@@ -34,4 +34,12 @@ class MikeysGames < Sinatra::Base
     @game.set_players_expected request.params["players-expected"]
     redirect "/pathwords/play"
   end
+
+  post "/pathwords/player_next" do
+    @game = Pathwords.instance_method
+    @game.players_nexted
+    @stage = 1
+    @round += 1
+    redirect "/pathwords/play"
+  end
 end

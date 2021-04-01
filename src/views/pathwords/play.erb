@@ -12,29 +12,31 @@
       GAME OVER
     </div>
     <%= erb :"pathwords/board" %>
-    <div class='stage-0' <%= "style='display:none;'" unless @game.stage == 0 %>>
-      <% if @game.players_expected == 0 %>
-        <form action='/pathwords/player_expect' method='POST'>
-          <label>
-            Number of Players
-            <input name='players-expected' min='1' type='number' required />
-          </label>
-          <button>Set Number of Players</button>
-        </form>
-      <% else %>
-        <p>
-          <span id='player-count'><%= @game.player_count %></span> / 
-          <span id='players-expected'><%= @game.players_expected %></span>
-          players have joined the game
-        </p>
-        <form id='player-join' action='/pathwords/player_join' method='POST'>
-          <label>
-            Player Name
-            <input name='player-name' type='text' required />
-          </label>
-          <button>Join Game</button>
-        </form>
-      <% end %>
+    <div class='stage-0 stage-1' <%= "style='display:none;'" unless @game.stage <= 1 %>>
+      <form action='/pathwords/player_expect' method='POST'>
+        <label>
+          Number of Players
+          <input name='players-expected' min='1' type='number' required value='<%= @game.players_expected %>' />
+        </label>
+        <button>Set Number of Players</button>
+      </form>
+      <p>
+        <span id='player-count'><%= @game.player_count %></span> / 
+        <span id='players-expected'><%= @game.players_expected %></span>
+        players have joined the game
+      </p>
+      <form id='player-join' action='/pathwords/player_join' method='POST'>
+        <label>
+          Player Name
+          <input name='player-name' type='text' required />
+        </label>
+        <button>Join Game</button>
+      </form>
+    </div>
+    <div class='stage-3'>
+      <form id='next-round' action='/pathwords/player_next' method='POST'>
+        <button>Next Round</button>
+      </form>
     </div>
   </section>
   <section id='words'>

@@ -13,6 +13,7 @@ class Pathwords
     @board_cache = []
     @players = {}
     @players_expected = 0
+    @players_ready = 0
     @timer = 0
 
     #stages are:
@@ -21,6 +22,7 @@ class Pathwords
     # 2 - in-game
     # 3 - post-game
     @stage = 0
+    @round = 0
 
     @dice.all.each_slice(4) do |row|
       @board << row
@@ -79,7 +81,28 @@ class Pathwords
   end
 
   def set_players_expected(count)
-    @players_expected = @players_expected > 0 ? @players_expected : count.to_i
+    count = count.to_i
+    if count < @players.size
+      @players_expected = @players.size
+    else
+      @players_expected = count
+    end
+  end
+
+  def player_next(id)
+    @players[id].ready_next = true
+    @players_ready = @players.select{|id,player| player.ready_next }.size
+    if @players_ready == @players_expected
+      start_next_round
+    end
+  end
+
+  def start_next_round
+    @players.each do |player|
+      player.ready_next = false
+    end
+    @round += 1
+    @stage = 1
   end
 
   def get_timer
@@ -109,6 +132,7 @@ class Pathwords
       board: @board_cache,
       playerCount: @players.size,
       playersExpected: @players_expected,
+      playersReady: @players_ready,
       stage: @stage,
       timer: get_timer,
     }
@@ -119,6 +143,7 @@ class Pathwords
       board: @board_cache,
       playerCount: @players.size,
       playersExpected: @players_expected,
+      playersReady: @players_ready,
       players: @players.map { |id, player| player.name }.sort,
       stage: @stage,
       timer: get_timer,

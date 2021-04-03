@@ -98,7 +98,7 @@ class Pathwords
   end
 
   def start_next_round
-    @players.each do |player|
+    @players.each do |id, player|
       player.ready_next = false
     end
     @round += 1

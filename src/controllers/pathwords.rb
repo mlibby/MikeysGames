@@ -1,5 +1,9 @@
 class MikeysGames < Sinatra::Base
   get "/pathwords/serve" do
+    addr = Socket.ip_address_list.detect { |addr| addr.ipv4_private? }
+    port = request.env["SERVER_PORT"]
+    @server = "#{addr.ip_address}:#{port}"
+    @qr_code = qr_code("http://#{@server}/")
     @title = "Pathwords"
     @game = Pathwords.instance
     erb_layout :"pathwords/serve"
@@ -36,10 +40,8 @@ class MikeysGames < Sinatra::Base
   end
 
   post "/pathwords/player_next" do
-    @game = Pathwords.instance_method
-    @game.players_nexted
-    @stage = 1
-    @round += 1
+    @game = Pathwords.instance
+    @game.player_next(cookies[:player_id])
     redirect "/pathwords/play"
   end
 end

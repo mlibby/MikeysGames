@@ -12,6 +12,10 @@
       GAME OVER
     </div>
     <%= erb :"pathwords/board" %>
+    <div id='connect-info' class='stage-0'>
+      <p class='big'>Connect to this server at <tt><%= @server %></tt> or scan this code</p>
+      <%= @qr_code %>
+    </div>
   </section>
   <section id='players'>
     <h2>Players</h2>

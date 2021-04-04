@@ -1,5 +1,9 @@
 class MikeysGames < Sinatra::Base
   get "/pathwords/serve" do
+    addr = Socket.ip_address_list.detect { |addr| addr.ipv4_private? }
+    port = request.env["SERVER_PORT"]
+    @server = "#{addr.ip_address}:#{port}"
+    @qr_code = qr_code("http://#{@server}/")
     @title = "Pathwords"
     @game = Pathwords.instance
     erb_layout :"pathwords/serve"

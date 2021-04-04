@@ -7,6 +7,9 @@ class Pathwords
 
   attr_accessor :players_expected, :stage
 
+  SECONDS_PRE_GAME = 5
+  SECONDS_IN_GAME = 30
+
   def initialize
     @dice = new_dice.roll
     @board = []
@@ -68,7 +71,7 @@ class Pathwords
     @players[player.id] = player
     if @players.size == @players_expected
       @stage = 1
-      @timer = Time.now + 10
+      @timer = Time.now + SECONDS_PRE_GAME
     end
   end
 
@@ -91,18 +94,19 @@ class Pathwords
 
   def player_next(id)
     @players[id].ready_next = true
-    @players_ready = @players.select{|id,player| player.ready_next }.size
+    @players_ready = @players.select { |id, player| player.ready_next }.size
     if @players_ready == @players_expected
       start_next_round
     end
   end
 
   def start_next_round
-    @players.each do |player|
+    @players.each do |id, player|
       player.ready_next = false
     end
     @round += 1
     @stage = 1
+    @timer = Time.now + SECONDS_PRE_GAME
   end
 
   def get_timer
@@ -118,9 +122,7 @@ class Pathwords
       elsif @stage == 2
         @dice.roll
         cache_board
-        # very short games for testing
-        @timer = now + 30
-        #@timer = now + 180
+        @timer = now + SECONDS_IN_GAME
       end
     end
 

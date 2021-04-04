@@ -36,10 +36,8 @@ class MikeysGames < Sinatra::Base
   end
 
   post "/pathwords/player_next" do
-    @game = Pathwords.instance_method
-    @game.players_nexted
-    @stage = 1
-    @round += 1
+    @game = Pathwords.instance
+    @game.player_next(cookies[:player_id])
     redirect "/pathwords/play"
   end
 end
